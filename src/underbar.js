@@ -71,19 +71,18 @@
         result = index;
       }
     });
-
     return result;
   };
 
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, test) {
     var filtered = [];
-    _.each(collection, function(element) {
-      if (test(element)) {
-        filtered.push(element);
+    _.reduce(collection, function(memo, item) {
+      if (test(item)) {
+        filtered.push(item);
       }
-
-    });
+      return memo;
+    },0);
     return filtered;
   };
 
