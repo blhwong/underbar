@@ -190,9 +190,7 @@
     if (arguments[1] === undefined) {
       iterator = _.identity;
     }
-    //console.log(iterator);
     return _.reduce(collection, function(accumulator, currentValue) {
-      //console.log(collection, iterator(currentValue), accumulator, currentValue);
       if (!(iterator(currentValue))) {
         return false;
       }
@@ -207,7 +205,7 @@
     if (arguments[1] === undefined) {
       var iterator = _.identity;
     }
-    return !_.every(collection, function(items) {
+    return !_.every(collection, function(items ){
       return !iterator(items);
     });
   };
@@ -232,6 +230,12 @@
   //     bla: "even more stuff"
   //   }); // obj1 now contains key1, key2, key3 and bla
   _.extend = function(obj) {
+    for (var index = 1; index < arguments.length; index++) {
+      for (var prop in arguments[index]) {
+        obj[prop] = arguments[index][prop];
+      }
+    }
+    return obj;
   };
 
   // Like extend, but doesn't ever overwrite a key that already
