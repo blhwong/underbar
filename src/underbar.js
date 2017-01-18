@@ -161,7 +161,7 @@
   _.reduce = function(collection, iterator, accumulator) {
     if (arguments[2] === undefined) {
       accumulator = collection[0];
-      collection = collection.slice(1,collection.length);
+      collection = collection.slice(1, collection.length);
     }
     var current = accumulator;
     _.each(collection, function(item, index) {
