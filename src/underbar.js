@@ -193,7 +193,7 @@
     //console.log(iterator);
     return _.reduce(collection, function(accumulator, currentValue) {
       //console.log(collection, iterator(currentValue), accumulator, currentValue);
-      if (!iterator(currentValue)) {
+      if (!(iterator(currentValue))) {
         return false;
       }
       return true && accumulator;
@@ -204,13 +204,12 @@
   // provided, provide a default one
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
-    for (var i = 0; i < collection.length; i++) {
-      console.log(collection, collection[i], iterator);
-      if(_.every([collection[i]], iterator)) {
-        return true;
-      }
+    if (arguments[1] === undefined) {
+      var iterator = _.identity;
     }
-    return false;
+    return !_.every(collection, function(items) {
+      return !iterator(items);
+    });
   };
 
 
