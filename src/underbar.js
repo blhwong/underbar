@@ -298,7 +298,7 @@
       if (cache.hasOwnProperty(cacheProperty)) {
         return cache[cacheProperty];
       } else {
-        cache[cacheProperty] = func.apply(this,arguments);
+        cache[cacheProperty] = func.apply(this, arguments);
         return cache[cacheProperty];
       }
     }
@@ -311,6 +311,10 @@
   // parameter. For example _.delay(someFunction, 500, 'a', 'b') will
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
+    var args = Array.prototype.slice.call(arguments,2);
+    window.setTimeout(function() {
+      func.apply(this, args);
+    }, wait);
   };
 
 
