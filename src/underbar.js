@@ -368,7 +368,6 @@
   _.sortBy = function(collection, iterator) {
     return collection.sort(function(a, b) {
       if (typeof iterator === 'string') {
-        console.log(a[iterator]);
         return a[iterator] - b[iterator];
       } else {
         return iterator(a) - iterator(b);
