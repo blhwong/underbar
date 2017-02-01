@@ -187,14 +187,9 @@
   _.every = function(collection, iterator) {
     // TIP: Try re-using reduce() here.
     //console.log(arguments[1]);
-    if (arguments[1] === undefined) {
-      iterator = _.identity;
-    }
-    return _.reduce(collection, function(accumulator, currentValue) {
-      if (!(iterator(currentValue))) {
-        return false;
-      }
-      return true && accumulator;
+    iterator = iterator || _.identity;
+    return !!_.reduce(collection, function(accumulator, current) {
+      return accumulator && iterator(current);
     }, true);
   };
 
