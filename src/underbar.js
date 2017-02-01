@@ -80,8 +80,7 @@
       if (test(item)) {
         filtered.push(item);
       }
-      return memo;
-    },0);
+    }, filtered);
     return filtered;
   };
 
@@ -115,9 +114,11 @@
     // the members, it also maintains an array of results.
     var mapped = [];
     _.reduce(collection, function(memo, item) {
+      //return mapped.push(iterator(value, key, collection));
+      //console.log(iterator(value), value, key, collection);
       mapped.push(iterator(item));
-      return memo;
-    },0);
+      ;
+    }, mapped);
     return mapped;
   };
 
