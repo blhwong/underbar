@@ -114,10 +114,7 @@
     // the members, it also maintains an array of results.
     var mapped = [];
     _.reduce(collection, function(memo, item) {
-      //return mapped.push(iterator(value, key, collection));
-      //console.log(iterator(value), value, key, collection);
       mapped.push(iterator(item));
-      ;
     }, mapped);
     return mapped;
   };
