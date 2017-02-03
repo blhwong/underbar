@@ -285,13 +285,11 @@
   _.memoize = function(func) {
     var cache = {};
     return function() {
-      var cacheProperty = func + Array.prototype.slice.call(arguments) + arguments.length;
-      if (cache.hasOwnProperty(cacheProperty)) {
-        return cache[cacheProperty];
-      } else {
-        cache[cacheProperty] = func.apply(this, arguments);
-        return cache[cacheProperty];
+      var args = JSON.stringify(arguments);
+      if(!cache[args]) {
+        cache[args] = func.apply(this, arguments);
       }
+      return cache[args];
     }
   };
 
